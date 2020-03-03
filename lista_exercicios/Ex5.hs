@@ -1,2 +1,2 @@
-elemento :: [Int] -> Int -> Int
-elemento lista indice = lista !! indice
+elemento :: Int -> [Int] -> Int
+elemento indice lista = lista !! indice
