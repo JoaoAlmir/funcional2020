@@ -1,4 +1,5 @@
 fibonacci :: Int -> Int
+fibonacci 0 = 0
 fibonacci x =
     if x < 3
         then 1
