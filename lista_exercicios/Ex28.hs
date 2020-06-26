@@ -1,5 +1,4 @@
---Incompleto
 rotDir:: Int -> String -> String
-rotDir num lista
-        | num < 1 = []
-        | otherwise = rotDir num(-1) lista ++ [head lista]
+
+rotDir 0 str = str
+rotDir num str = rotDir (num+(-1)) (last str:init str)  
