@@ -1,5 +1,3 @@
 intersec :: [Int] -> [Int] -> [Int]
-intersec a b
-        | a == [] = []
-        | b == [] = []
-        |otherwise = [x| x <- a, elem x b]
+intersec a b =
+        [x| x <- a, x `elem` b]
