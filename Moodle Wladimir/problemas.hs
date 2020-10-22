@@ -34,11 +34,6 @@ frequencia num lista
     |head lista == num = 1 + frequencia (num) (tail lista) -- se cabeça for igual num, soma 1 e chama recursivamente
     |otherwise = frequencia num (tail lista)
 
-{-insertSort:: [Int] -> [Int]
-insertSort lista
-    |lista == [] = []
-    |
--}
 
 temLetraOuDigito:: String -> Bool -- true se tiver letra falso caso contrario
 temLetraOuDigito str
@@ -52,8 +47,36 @@ noIntervalo num1 num2 lista
     |head lista >= num1 && head lista <= num2 = head lista:noIntervalo num1 num2 (tail lista) -- se cabeça for maior ou igual que num1 e menor ou igual a num2 insere no retorno 
     |otherwise = noIntervalo num1 num2 (tail lista)
 
-intercala :: a -> [a] -> [a]
+intercala :: a -> [a] -> [a] --coloca el entre cada elemento da lista
 intercala el lista
     |length lista < 1 = lista --se tiver tamanho 1 para e coloca ultimo
     |otherwise = head lista : el : intercala el (tail lista)
+
+metadePares::[Integer] -> [Integer] -- retorna nova lista com pares divididos por 2
+metadePares lista
+    |lista == [] = []
+    |head lista `mod` 2 == 0 = head lista `div` 2:metadePares (tail lista) -- se encontrar um par insere cabeça dividido por 2 e chama recursivo
+    |otherwise = metadePares (tail lista)
+
+insert::Ord a => a -> [a] -> [a] -- insere num em uma lista ordenada e continua ordenada
+insert num lista
+    |lista == [] = []
+    |head lista > num = num:lista -- se encontrar uma cabeça maior que o num, insere num
+    |otherwise = head lista: insert num (tail lista)
+
+maiorSalto'::[Integer] -> Integer -> Integer --auxiliar da questão maiorSalto
+maiorSalto' lista num
+    |length lista < 2 = num
+    |num < abs( (head lista) - lista !! 1 ) = maiorSalto' (tail lista) (abs( (head lista) - lista !! 1 )) --pega indice 0 e 1, pega valor absoluto da subtração e se for menor que num chama função recursiva com novo num
+    |otherwise = maiorSalto' (tail lista) (num)
+
+maiorSalto::[Integer] -> Integer
+maiorSalto lista = maiorSalto' lista 0 -- chama função auxiliar com o num = 0
+
+
+remdups::[Int] -> [Int]  --remove elementos repetidos
+remdups lista
+    |length lista < 2 = lista
+    |head lista == lista !! 1 = remdups (tail lista) -- se a cabeça for igual ao indice 1 ignora e chama recursivo com cauda
+    |otherwise = head lista:remdups (tail lista)  -- adiciona cabeça
 
