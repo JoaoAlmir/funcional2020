@@ -113,6 +113,8 @@ contaIguais lista
     |head lista == lista !! 1 = 1 + contaIguais (tail lista) -- se o indice 0 e 1 for igual adiciona 1
     |otherwise = 1
 
+
+
 pontos' :: [Int] -> Int -> Int -- função auxiliar de pontos
 pontos' lista aux
     |lista == [] = aux
@@ -122,4 +124,8 @@ pontos' lista aux
 
 pontos:: [Int] -> Int -- Retorna maior numero de elementos repetidos seguidos
 pontos lista = pontos' lista 0 --chama função auxiliar com 0 no aux
+
+reverse2 a = foldr (\b c -> c ++ [b] ) [] a --inverte a lista
+                                            --B recebe lista vazia e C recebe A
+                                             --como é foldr e não foldl, ele inicia pela direita da lista, inserindo do final ao começo
 
