@@ -125,7 +125,24 @@ pontos' lista aux
 pontos:: [Int] -> Int -- Retorna maior numero de elementos repetidos seguidos
 pontos lista = pontos' lista 0 --chama função auxiliar com 0 no aux
 
-reverse2:: [Int] -> [Int]
-reverse2 lista = foldr (\vazia c -> c ++ [vazia] ) [] lista --inverte a lista
-                                            --B recebe lista vazia e C recebe A
-                                             --como é foldr e não foldl, ele inicia pela direita da lista, inserindo do final ao começo
+
+
+
+concatenaFold :: [[a]] -> [a] -- recebe lista de lista e retorna lista
+concatenaFold = foldl (++) [] --adiciona todos os elementos a partir da esquerda
+
+
+
+
+inverteFold:: [a] -> [a]
+inverteFold = foldr (\x acc -> acc ++ [x] ) []  --inverte a lista
+                                                --como é foldr, ele inicia pela direita da lista, inserindo do final ao começo
+
+
+paridadeFold :: [Bool] -> Bool
+paridadeFold lista
+    |mod (foldr (\x acc -> if(x == True) then acc+1 else acc) 0 lista) 2 == 0 = True --foldr vai retornar o acc que é o contador e vai retornar True se o acc for par e False se for impar
+    |otherwise = False
+
+mapFold :: (a->b) -> [a] -> [b]
+mapFold f lista = foldr (\x acc-> [f(x)] ++ acc) [] lista --usa função em cada elemento parecido com map
