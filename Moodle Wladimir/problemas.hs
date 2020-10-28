@@ -125,7 +125,7 @@ pontos' lista aux
 pontos:: [Int] -> Int -- Retorna maior numero de elementos repetidos seguidos
 pontos lista = pontos' lista 0 --chama função auxiliar com 0 no aux
 
+reverse2:: [Int] -> [Int]
 reverse2 lista = foldr (\vazia c -> c ++ [vazia] ) [] lista --inverte a lista
                                             --B recebe lista vazia e C recebe A
                                              --como é foldr e não foldl, ele inicia pela direita da lista, inserindo do final ao começo
-
